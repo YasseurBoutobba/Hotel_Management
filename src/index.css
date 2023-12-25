@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Outfit', sans-serif;
+}
+.active-link{
+    background-color: #6656E1;
+    color: white;
+    border-radius: 5px;
+    padding: .5rem 1rem ;
+}
+.active-link .icon{
+    color: #3B28CC;
+    font-weight: bold;
+    font-size: larger;
+}

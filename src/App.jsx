@@ -3,8 +3,7 @@ import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
 import Search from "./components/Search";
 import MainRoute from "./routes/MainRoute";
-import Random from "./routes/Random";
-import Shit from "./routes/Shit";
+import Dashboard from "./routes/Dashboard";
 function App() {
   const routes = [
     {
@@ -20,8 +19,8 @@ function App() {
         <Search />
         <Routes>
           <Route path="/" element={<MainRoute />} >
-            <Route path="/" element={<Random />} />
-            <Route path="/shit" element={<Shit />} />
+            <Route path="/" element={<Dashboard />} />
+            
           </Route>
         </Routes>
 

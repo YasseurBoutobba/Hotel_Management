@@ -57,7 +57,7 @@ const LoyalCostumers = () => {
   const [shownCostumers, setShownCostumers] = useState(2);
   const handleClick = (e) => {
     if (e.target.innerText === "View More") {
-      setShownCostumers(5);
+      setShownCostumers(4);
       e.target.innerText = "View Less";
     } else {
       setShownCostumers(2);

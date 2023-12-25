@@ -5,7 +5,7 @@ import {
   RoomsIcon,
   SettingsIcon,
   LogoutIcon,
-} from "../icons";
+} from "../utils/icons";
 import logo from "../assets/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 const LeftSideBar = () => {
@@ -43,15 +43,18 @@ const LeftSideBar = () => {
       icon: <LogoutIcon />,
       path: "/logout",
     },
-  ]
+  ];
   return (
     <nav className=" fixed top-0 left-0 w-[15dvw] h-[100dvh] text-lg  text-primaryGrey  bg-gray-100 flex flex-col justify-between items-center py-8">
-      <Link to='/'>
+      <Link to="/">
         <img className=" w-[80px] h-auto" src={logo} alt="" />
       </Link>
       <ul className=" flex flex-col w-full px-6 gap-6 mb-8">
         {links.map((link, i) => (
-          <li key={i} className={` ${pathname === link.path ? "active-link" : ""}`}>
+          <li
+            key={i}
+            className={` ${pathname === link.path ? "active-link" : ""}`}
+          >
             <Link className=" flex items-center gap-2  " to={link.path}>
               {link.icon}
               {link.name}
@@ -61,7 +64,10 @@ const LeftSideBar = () => {
       </ul>
       <ul className=" flex flex-col w-full px-6 gap-6">
         {links2.map((link, i) => (
-          <li key={i} className={`${pathname === link.path ? "active-link" : ""}`}>
+          <li
+            key={i}
+            className={`${pathname === link.path ? "active-link" : ""}`}
+          >
             <Link className=" flex items-center gap-2  " to={link.path}>
               {link.icon}
               {link.name}
@@ -69,7 +75,6 @@ const LeftSideBar = () => {
           </li>
         ))}
       </ul>
-      
     </nav>
   );
 };

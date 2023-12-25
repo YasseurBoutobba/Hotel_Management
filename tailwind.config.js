@@ -10,6 +10,9 @@ export default {
         primaryGreen: "#28CC42",
         primaryRed: "#CC2828",
       },
+      backgroundImage:{
+        "card-pattern": "url('/src/assets/cardBackground.svg')",
+      }
     },
   },
   plugins: [],

@@ -4,12 +4,27 @@ import RightSideBar from "./components/RightSideBar";
 import Search from "./components/Search";
 import MainRoute from "./routes/MainRoute";
 import Dashboard from "./routes/Dashboard";
+import Users from "./routes/Users";
+import Booking from "./routes/Booking";
+import Rooms from "./routes/Rooms";
 function App() {
   const routes = [
     {
       path: "/",
-      element: <MainRoute />,
+      element: <Dashboard />,
     },
+    {
+      path: "/users",
+      element: <Users />,
+    },
+    {
+      path: "/booking",
+      element: <Booking />
+    },
+    {
+      path: "/rooms",
+      element: <Rooms />
+    }
   ];
   return (
     <>
@@ -19,7 +34,11 @@ function App() {
         <Search />
         <Routes>
           <Route path="/" element={<MainRoute />} >
-            <Route path="/" element={<Dashboard />} />
+            {
+              routes.map((route, index) => {
+                return <Route key={index} path={route.path} element={route.element} />
+              })
+            }
             
           </Route>
         </Routes>

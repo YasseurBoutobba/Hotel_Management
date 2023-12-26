@@ -27,7 +27,7 @@
 // // };
 
 
- const users = [
+const users = [
   {
     userInfos: {
       name: "Alice",
@@ -52,7 +52,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "conference room",
+      type: "suite",
       name: "conferenceRoom2",
       from: "2022-01-10",
       to: "2022-01-15",
@@ -85,7 +85,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "office space",
+      type: "suite",
       name: "officeSpace3",
       from: "2022-03-01",
       to: "2022-03-15",
@@ -118,7 +118,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "meeting room",
+      type: "suite",
       name: "meetingRoom1",
       from: "2022-02-20",
       to: "2022-02-25",
@@ -184,7 +184,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "conference room",
+      type: "suite",
       name: "conferenceRoom1",
       from: "2022-05-10",
       to: "2022-05-15",
@@ -217,7 +217,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "office space",
+      type: "suite",
       name: "officeSpace1",
       from: "2022-06-01",
       to: "2022-06-15",
@@ -250,7 +250,7 @@
     },
     bookingStatus: "Approved",
     currentBooking: {
-      type: "meeting room",
+      type: "suite",
       name: "meetingRoom2",
       from: "2022-07-20",
       to: "2022-07-25",
@@ -261,5 +261,6 @@
   },
   // ... Add more users as needed
 ];
+
 
 export default users;

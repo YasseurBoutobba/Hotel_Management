@@ -2,6 +2,7 @@ import CostumUserCard from "./CostumUserCard";
 import ConfirmModal from "./ConfirmModal";
 import { AcceptIcon, CancelIcon } from "../utils/icons";
 import { useState } from "react";
+import image from "../assets/admin.png"
 const BookingCard = ({ user }) => {
   const [confirm, setConfirm] = useState({ show: false, userId: null });
 
@@ -29,7 +30,7 @@ const BookingCard = ({ user }) => {
 
       <div className=" flex  gap-6  items-center flex-1">
         <div className=" w-[150px]">
-          <CostumUserCard name={user?.userInfos?.name} img={""} role={"user"} />
+          <CostumUserCard name={user?.userInfos?.name} img={image} role={"user"} />
         </div>
         <span
           className={`  w-[100px] text-center px-4  text-sm text-gray-50 ${

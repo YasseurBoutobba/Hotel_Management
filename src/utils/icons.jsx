@@ -10,6 +10,7 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { RiSearch2Line } from "react-icons/ri";
+import { ImCross } from "react-icons/im";
 
 const DashboardIcon = ({styles}) => <IoMenu className={` icon ${styles}`} />;
 const BookingIcon = ({styles}) => <PiNotepadFill className={` icon ${styles}`} />;
@@ -19,7 +20,7 @@ const NotificationsIcon = ({styles}) => <IoIosNotificationsOutline className={` 
 const FilterIcon = ({styles}) => <TbFilterSearch className={` icon ${styles}`} />;
 const CheckIcon = ({styles}) => <FaCheckCircle className={` icon ${styles}`} />;
 const AcceptIcon = ({styles}) => <FaCheck className={` icon ${styles}`} />;
-const CancelIcon = ({styles}) => <IoCloseSharp className={` icon ${styles}`} />;
+const CancelIcon = ({styles}) => <ImCross className={` icon ${styles}`} />;
 const SettingsIcon = ({styles}) => <IoMdSettings className={` icon ${styles}`} />;
 const LogoutIcon = ({styles}) => <LuLogOut className={` icon ${styles}`} />;
 const CalendarIcon = ({styles}) => <BsFillCalendar2DateFill className={` icon ${styles}`} />;

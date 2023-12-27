@@ -27,14 +27,6 @@ export const createUser = createAsyncThunk("users/createUser", async (user) => {
     return error.response;
   }
 });
-export const updateUser = createAsyncThunk("users/updateUser", async (user) => {
-  try {
-    const response = await axios.put(`${API_URL}/users/${user.id}`, user);
-    return response;
-  } catch (error) {
-    return error.response;
-  }
-});
 export const deleteUser = createAsyncThunk("users/deleteUser", async (id) => {
   try {
     const response = await axios.delete(`${API_URL}/users/${id}`);
@@ -78,22 +70,6 @@ const userSlice = createSlice({
         }
       })
       .addCase(createUser.rejected, (state, action) => {
-        state.pendingUsers = false;
-        Toast.error("Something went wrong");
-      })
-      .addCase(updateUser.pending, (state, action) => {
-        state.pendingUsers = true;
-      })
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.pendingUsers = false;
-        if (action.payload.status === 200) {
-          state.users = action.payload.data;
-          Toast.success("User updated successfully");
-        } else {
-          Toast.error(action.payload.data.message);
-        }
-      })
-      .addCase(updateUser.rejected, (state, action) => {
         state.pendingUsers = false;
         Toast.error("Something went wrong");
       })

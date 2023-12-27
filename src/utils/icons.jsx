@@ -5,7 +5,6 @@ import { PiBuildingsFill } from "react-icons/pi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { TbFilterSearch } from "react-icons/tb";
 import { FaCheckCircle, FaCheck } from "react-icons/fa";
-import { IoCloseSharp } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { BsFillCalendar2DateFill } from "react-icons/bs";

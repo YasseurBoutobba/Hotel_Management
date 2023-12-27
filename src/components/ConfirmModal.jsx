@@ -3,7 +3,7 @@ import Modal from "./Modal";
 const ConfirmMoadl =({show, onClose})=>{
     return(
         <Modal show={show} onClose={onClose} >
-            <div className="flex flex-col gap-6 px-12 py-6">
+            <div className="flex flex-col gap-6">
                 <h1 className=" text-xl text-primaryBlue">Are You Sure?</h1>
                 <p className=" text-primaryGrey">Please confirm this operation before we start</p>
                 <div className=" flex items-center justify-center gap-4">

@@ -10,7 +10,7 @@ const Modal = ({ show, onClose, children }) => {
           onClick={handelClose}
           className=" fixed bg-gray-600/50 inset-0 flex justify-center items-center"
         >
-          <div className=" flex justify-center items-center text-center bg-white p-6 rounded-md shadow-lg ">{children}</div>
+          <div className=" flex justify-center items-center text-center bg-white py-8 px-20 rounded-md shadow-lg ">{children}</div>
         </section>
       ) : null}
     </>

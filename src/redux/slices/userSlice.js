@@ -1,36 +1,46 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toast } from "react-toastify";
+import {Toast} from "../../toasts"
 
 const API_URL = "https://aceiny.tech:9991/users";
-const headers = {
-  authorization: localStorage.getItem("authorization"),
-};
+
 const initialState = {
   users: [],
   pendingUsers: false,
+  changedUsers : false,
 };
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   try {
-    const response = await axios.get(`${API_URL}/`, {headers});
+    const token = localStorage.getItem("authorization");
+
+    const response = await axios.get(`${API_URL}/`, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    });
     return response;
   } catch (error) {
     return error.response;
   }
 });
-export const createUser = createAsyncThunk(
-  "users/createUser",
-  async (user) => {
-    try {
-      const response = await axios.post(`${API_URL}`, {headers}, user);
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  }
-);
 
+
+export const createUser = createAsyncThunk("users/createUser", async (user) => {
+  try {
+    const token = localStorage.getItem("authorization");
+    const response = await axios.post(`${API_URL}`, user, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+});
 
 const usersSlice = createSlice({
   name: "users",
@@ -46,12 +56,12 @@ const usersSlice = createSlice({
         if (action.payload.status === 200) {
           state.users = [...action.payload.data];
         } else {
-          toast.error(action.payload.data.message);
+          Toast(action.payload.data.message, "success");
         }
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.pendingUsers = false;
-        toast.error("Something went wrong");
+        Toast("Something went wrong", "error");
       })
       .addCase(createUser.pending, (state, action) => {
         state.pendingUsers = true;
@@ -60,16 +70,16 @@ const usersSlice = createSlice({
         state.pendingUsers = false;
         if (action.payload.status === 200) {
           state.users = [...action.payload.data];
-          toast.success("User created successfully");
+          state.changedUsers = !state.changedUsers;
+          Toast("User created successfully","success");
         } else {
-          toast.error(action.payload.data.message);
+          Toast(action.payload.data.message);
         }
       })
       .addCase(createUser.rejected, (state, action) => {
         state.pendingUsers = false;
-        toast.error("Something went wrong");
+        Toast("Something went wrong", "error");
       });
-   
   },
 });
 

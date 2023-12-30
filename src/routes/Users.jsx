@@ -8,9 +8,11 @@ import { fetchUsers } from "../redux/slices/userSlice";
 const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
+  const changedUsers = useSelector((state) => state.users.changedUsers);
   useEffect(() => {
     dispatch(fetchUsers());
-  }, []);
+  }, [changedUsers]);
+  console.log(users);
   const STEP = 8;
   const {
     startingIndex,
@@ -35,7 +37,7 @@ const Users = () => {
       </div>
       <ul className=" flex flex-col gap-2">
         {users.slice(startingIndex, endingIndex).map((user) => (
-          <li key={user?.id}>
+          <li key={user?._id}>
             <UserListItem user={user} />
           </li>
         ))}

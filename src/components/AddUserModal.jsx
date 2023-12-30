@@ -37,6 +37,7 @@ const AddUserModal = ({ show, onClose }) => {
     dispatch(
       createUser({
         nom: userFirstName,
+        prenom: userLastName,
         email: userEmail,
         password: userPassword,
         status: userStatus,

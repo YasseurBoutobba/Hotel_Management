@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-
 export const Toast = (message, type) => {
   if (type === "success") {
     return toast.success(message, {

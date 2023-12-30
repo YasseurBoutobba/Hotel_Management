@@ -27,7 +27,7 @@ const NextPrevBar = ({
       </ul>
       <button
         onClick={handleNextClick}
-        className={`${endingIndex < usersNumbr ? " text-gray-900" : ""}`}
+        className={`${endingIndex < usersNumbr ? " text-gray-900" : " cursor-not-allowed "}`}
       >
         Next page
       </button>

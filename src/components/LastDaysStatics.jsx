@@ -1,16 +1,27 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNbrBookings, fetchNbrDone } from "../redux/slices/generalSlice";
+
 const LastDayStatics = () => {
+  const nbrBooking = useSelector((state) => state.general.nbrBookings);
+  const nbrDone = useSelector((state) => state.general.nbrDone);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchNbrBookings());
+    dispatch(fetchNbrDone());
+  }, []);
   const statics = [
     {
       name: "Booking Operations",
-      value: "30,000",
+      value: nbrBooking?.nbr || "0",
     },
     {
       name: "Done Booking",
-      value: "12,000",
+      value: nbrDone?.nbr || "0",
     },
     {
       name: "Satisfied Clients",
-      value: "17,000",
+      value: nbrBooking?.nbr - 1 || "0",
     },
   ];
   return (

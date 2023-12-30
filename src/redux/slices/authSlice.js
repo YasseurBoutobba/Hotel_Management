@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toast } from "react-toastify";
-
+import {Toast} from "../../toasts"
 const API_URL = "https://aceiny.tech:9991";
 
 const initialState = {
@@ -44,12 +43,12 @@ const authSlice = createSlice({
                 state.token = action.payload.data;
                 localStorage.setItem("authorization", action.payload.data);
             }else{
-                toast.error(action.payload.data.message);
+                Toast.error(action.payload.data.message);
             }
         })
         .addCase(signIn.rejected, (state, action) => {
             state.isAuthenticating = false;
-            toast.error("Something went wrong");
+            Toast.error("Something went wrong");
         })
     }
 })

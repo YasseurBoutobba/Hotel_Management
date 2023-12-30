@@ -1,59 +1,16 @@
 import CostumUserCard from "./CostumUserCard";
 import randomImg from "../assets/admin.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLoyalCustomers } from "../redux/slices/generalSlice";
 const LoyalCostumers = () => {
-  const loyalCostumers = [
-    {
-      name: "John Doe",
-      userImg: randomImg,
-      booking: "10",
-    },
-    {
-      name: "Jane Doe",
-      userImg: randomImg,
-      booking: "9",
-    },
-    {
-      name: "John Smith",
-      userImg: randomImg,
-      booking: "8",
-    },
-    {
-      name: "Jane Smith",
-      userImg: randomImg,
-      booking: "7",
-    },
-    {
-      name: "John Doe",
-      userImg: randomImg,
-      booking: "6",
-    },
-    {
-      name: "Jane Doe",
-      userImg: randomImg,
-      booking: "5",
-    },
-    {
-      name: "John Smith",
-      userImg: randomImg,
-      booking: "4",
-    },
-    {
-      name: "Jane Smith",
-      userImg: randomImg,
-      booking: "3",
-    },
-    {
-      name: "John Doe",
-      userImg: randomImg,
-      booking: "2",
-    },
-    {
-      name: "Jane Doe",
-      userImg: randomImg,
-      booking: "1",
-    },
-  ];
+  const loyalCostumers = useSelector((state) => state.general.loyalCustomers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLoyalCustomers());
+  }, []);
+
   const [shownCostumers, setShownCostumers] = useState(2);
   const handleClick = (e) => {
     if (e.target.innerText === "View More") {
@@ -71,11 +28,11 @@ const LoyalCostumers = () => {
         {loyalCostumers.slice(0, shownCostumers).map((costumer, index) => (
           <li key={index} className=" flex items-center gap-4">
             <CostumUserCard
-              name={costumer.name}
-              img={costumer.userImg}
+              name={costumer?.name}
+              img={randomImg}
               role="loyal user"
             />
-            <span className=" text-sm text-primaryGrey">{`+${costumer.booking} booking`}</span>
+            <span className=" text-sm text-primaryGrey">{`+${costumer?.nbr_bookings} booking`}</span>
           </li>
         ))}
       </ul>

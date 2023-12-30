@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Toast } from "react-toastify/dist/components";
+import { toast } from "react-toastify";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://aceiny.tech:9991";
 const initialState = {
   users: null,
   pendingUsers: false,
@@ -36,8 +36,8 @@ export const deleteUser = createAsyncThunk("users/deleteUser", async (id) => {
   }
 });
 
-const userSlice = createSlice({
-  name: "user",
+const usersSlice = createSlice({
+  name: "users",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -50,12 +50,12 @@ const userSlice = createSlice({
         if (action.payload.status === 200) {
           state.users = action.payload.data;
         } else {
-          Toast.error(action.payload.data.message);
+          toast.error(action.payload.data.message);
         }
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.pendingUsers = false;
-        Toast.error("Something went wrong");
+        toast.error("Something went wrong");
       })
       .addCase(createUser.pending, (state, action) => {
         state.pendingUsers = true;
@@ -64,14 +64,14 @@ const userSlice = createSlice({
         state.pendingUsers = false;
         if (action.payload.status === 200) {
           state.users = action.payload.data;
-          Toast.success("User created successfully");
+          toast.success("User created successfully");
         } else {
-          Toast.error(action.payload.data.message);
+          toast.error(action.payload.data.message);
         }
       })
       .addCase(createUser.rejected, (state, action) => {
         state.pendingUsers = false;
-        Toast.error("Something went wrong");
+        toast.error("Something went wrong");
       })
       .addCase(deleteUser.pending, (state, action) => {
         state.pendingUsers = true;
@@ -80,16 +80,16 @@ const userSlice = createSlice({
         state.pendingUsers = false;
         if (action.payload.status === 200) {
           state.users = action.payload.data;
-          Toast.success("User deleted successfully");
+          toast.success("User deleted successfully");
         } else {
-          Toast.error(action.payload.data.message);
+          toast.error(action.payload.data.message);
         }
       })
       .addCase(deleteUser.rejected, (state, action) => {
         state.pendingUsers = false;
-        Toast.error("Something went wrong");
+        toast.error("Something went wrong");
       });
   },
 });
 
-export default userSlice.reducer;
+export default usersSlice.reducer;

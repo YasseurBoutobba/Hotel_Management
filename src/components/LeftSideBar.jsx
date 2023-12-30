@@ -6,8 +6,10 @@ import {
   SettingsIcon,
   LogoutIcon,
 } from "../utils/icons";
+import { useDispatch } from "react-redux";
 import logo from "../assets/logo.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "../redux/slices/authSlice";
 const LeftSideBar = () => {
   const { pathname } = useLocation();
   const links = [
@@ -44,6 +46,15 @@ const LeftSideBar = () => {
       path: "/logout",
     },
   ];
+  const navgate = useNavigate()
+
+  const dispatch = useDispatch()
+  const handleLogOut = ()=>{
+    dispatch(logout())
+    console.log("logged out") 
+    navgate("/")
+    
+  }
   return (
     <nav className=" fixed top-0 left-0 w-[15dvw] h-[100dvh] text-lg  text-primaryGrey  bg-gray-100 flex flex-col justify-between items-center py-8">
       <Link to="/">
@@ -63,7 +74,24 @@ const LeftSideBar = () => {
         ))}
       </ul>
       <ul className=" flex flex-col w-full px-6 gap-6">
-        {links2.map((link, i) => (
+        {links2.map((link, i) => {
+        if(link.name === "Logout"){
+          console.log("hello")
+          return(
+            <li
+            key={i}
+            className={`${pathname === link.path ? "active-link" : ""}`}
+          >
+            <button onClick={handleLogOut}>
+            <Link className=" flex items-center gap-2  " to={link.path}>
+              {link.icon}
+              {link.name}
+            </Link>
+            </button>
+          </li>
+          )
+        }
+        return(
           <li
             key={i}
             className={`${pathname === link.path ? "active-link" : ""}`}
@@ -73,7 +101,7 @@ const LeftSideBar = () => {
               {link.name}
             </Link>
           </li>
-        ))}
+        )})}
       </ul>
     </nav>
   );

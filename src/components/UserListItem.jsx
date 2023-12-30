@@ -17,13 +17,13 @@ const UserListItem = ({ user }) => {
       <div className="flex-grow flex ">
         <div className=" flex-grow">
           <CostumUserCard
-            name={user?.userInfos?.name}
+            name={`${user?.nom} ${user?.prenom}`}
             img={image}
             role={"user"}
           />
         </div>
 
-        <span className="flex-grow text-primaryGrey">{user?.userInfos?.email}</span>
+        <span className="flex-grow text-primaryGrey">{user?.email}</span>
       </div>
       <button  onClick={handleDelete}>
         <CancelIcon styles={"text-2xl text-gray-600"} />

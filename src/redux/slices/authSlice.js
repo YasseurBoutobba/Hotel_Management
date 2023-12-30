@@ -8,7 +8,7 @@ const initialState = {
     status: "idle",
     error : null,
     token : null,
-    isAuthenticated : localStorage.getItem("token") ? true : false,
+    isAuthenticated : localStorage.getItem("authorization") ? true : false,
     isAuthenticating : false,
 }
 export const signIn = createAsyncThunk("auth/signIn", 
@@ -26,7 +26,7 @@ const authSlice = createSlice({
     initialState,
     reducers : {
         logout : (state, action) => {
-            localStorage.removeItem("token");
+            localStorage.removeItem("authorization");
             state.isAuthenticated = false;
             state.token = null;
             state.user = null;
@@ -41,8 +41,8 @@ const authSlice = createSlice({
             state.isAuthenticating = false;
             if(action.payload.status === 200){
                 state.isAuthenticated = true;
-                state.token = action.payload.data.token;
-                localStorage.setItem("token", action.payload.data.token);
+                state.token = action.payload.data;
+                localStorage.setItem("authorization", action.payload.data);
             }else{
                 toast.error(action.payload.data.message);
             }

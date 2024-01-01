@@ -8,7 +8,6 @@ import AddRoomModal from "../components/AddRoomModal";
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms.rooms);
   const changedRooms = useSelector((state) => state.rooms.changedRooms);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

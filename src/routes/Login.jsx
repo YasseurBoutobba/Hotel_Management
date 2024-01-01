@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import CustomInput from "../components/CustomInput";
 import { useState } from "react";
-import { setUserName, signIn } from "../redux/slices/authSlice";
+import {  signIn } from "../redux/slices/authSlice";
 const Login = () => {
     const dispatch = useDispatch()
     const [user, setUser] = useState({email : "", password: ""})
@@ -13,7 +13,6 @@ const Login = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(setUserName(user.email))
         dispatch(signIn(user))
         console.log("signed in")
     }

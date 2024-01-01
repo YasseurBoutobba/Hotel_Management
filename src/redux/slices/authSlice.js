@@ -7,7 +7,7 @@ const initialState = {
     status: "idle",
     error : null,
     token : null,
-    userName: '',
+    userInfo: '',
     isAuthenticated : localStorage.getItem("authorization") ? true : false,
     isAuthenticating : false,
 }
@@ -30,11 +30,8 @@ const authSlice = createSlice({
             localStorage.removeItem("authorization");
             state.isAuthenticated = false;
             state.token = null;
-            state.userName = null;
+            state.userInfo = null;
         },
-        setUserName : (state, action) => {
-            state.userName = action.payload;
-        }
     },
     extraReducers : (builder) => {
         builder
@@ -45,8 +42,9 @@ const authSlice = createSlice({
             state.isAuthenticating = false;
             if(action.payload.status === 200){
                 state.isAuthenticated = true;
-                state.token = action.payload.data;
-                localStorage.setItem("authorization", action.payload.data);
+                state.token = action.payload.data.token;
+                localStorage.setItem("authorization", action.payload.data.token)
+                state.userInfo = action.payload.data.user;
                 Toast("Login Successful", "success")
             }else{
                 Toast(action.payload.data.message, "error");
@@ -59,5 +57,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout, setUserName } = authSlice.actions;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

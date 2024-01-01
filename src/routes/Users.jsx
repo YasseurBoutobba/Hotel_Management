@@ -9,9 +9,12 @@ const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const changedUsers = useSelector((state) => state.users.changedUsers);
+
+
   useEffect(() => {
     dispatch(fetchUsers());
     console.log("shit users is going crazy ")
+    console.log(users)
   }, [changedUsers]);
   const STEP = 7;
   const {

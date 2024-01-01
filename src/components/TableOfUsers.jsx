@@ -3,9 +3,18 @@ import CostumUserCard from "./CostumUserCard";
 import { CheckIcon } from "../utils/icons";
 import NextPrevBar from "./NextPrevBar";
 import useNextPrev from "../hooks/useNextPrev";
-import users from "../data/data";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchBooking } from "../redux/slices/bookingSlice";
 const TableOfUsers = () => {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.booking.bookings);
+  const usersChanged = useSelector((state) => state.booking.bookingChanged);
+  useEffect(() => {
+    dispatch(fetchBooking());
+    console.log("shit runing");
+  }, [usersChanged]);
+
   const STEP = 5;
   const {
     startingIndex,
@@ -35,31 +44,27 @@ const TableOfUsers = () => {
           {users.slice(startingIndex, endingIndex).map((user, index) => (
             <tr key={index} className=" border-b-[1px] bg-gray-50">
               <td className="pl-2 py-3">
-                <CostumUserCard
-                  name={user?.userInfos?.name}
-                  role={"user"}
-                  img={image}
-                />
+                <CostumUserCard name={user?.name} role={"user"} img={image} />
               </td>
               <td>
                 <span
                   className={` flex justify-center  text-sm text-gray-50 ${
-                    user.bookingStatus === "Pending"
+                    user?.status === "Pending"
                       ? "bg-primaryGrey"
-                      : user.bookingStatus === "Approved"
+                      : user?.status === "Done"
                       ? "bg-primaryGreen"
-                      : user.bookingStatus === "Declined"
+                      : user?.status === "Canceled"
                       ? "bg-primaryRed"
                       : " text-primaryGrey"
                   } py-1  rounded-[5px]`}
                 >
-                  {user.bookingStatus}
+                  {user?.status}
                 </span>
               </td>
               <td>
                 <span className=" flex justify-center text-sm text-primaryGrey">
-                  {user.currentBooking !== null
-                    ? `${user.currentBooking.from} --> ${user.currentBooking.to}`
+                  {user?.start_date !== ""
+                    ? `${user?.start_date} --> ${user?.end_date}`
                     : "No date available "}
                 </span>
               </td>
@@ -67,7 +72,7 @@ const TableOfUsers = () => {
                 <span className=" flex justify-center">
                   <CheckIcon
                     styles={`${
-                      user.currentBooking?.type === "suite"
+                      user?.room.toLowerCase().includes("suite")
                         ? "text-primaryGrey"
                         : " text-transparent"
                     }`}
@@ -78,7 +83,7 @@ const TableOfUsers = () => {
                 <span className=" flex justify-center">
                   <CheckIcon
                     styles={`${
-                      user.currentBooking?.type === "room"
+                      user?.room.toLowerCase().includes("room")
                         ? "text-primaryGrey"
                         : " text-transparent"
                     }`}

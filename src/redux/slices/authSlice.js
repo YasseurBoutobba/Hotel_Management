@@ -7,7 +7,7 @@ const initialState = {
     status: "idle",
     error : null,
     token : null,
-    userInfo: '',
+    userInfo: null ,
     isAuthenticated : localStorage.getItem("authorization") ? true : false,
     isAuthenticating : false,
 }

@@ -4,9 +4,9 @@ import { CancelIcon } from "../utils/icons";
 import { useState } from "react";
 import ConfirmMoadl from "./ConfirmModal";
 const UserListItem = ({ user }) => {
-  const [confirm, setConfirm] = useState({ show: false, userId: user?._id });
+  const [confirm, setConfirm] = useState({ show: false, userId: null });
   const handleDelete = (e) => {
-    setConfirm({ show: true, userId: user?.id });
+    setConfirm({ show: true, userId: user?._id });
   };
   return (
     <div className=" flex  px-4 py-2 bg-gray-50  items-center  ">

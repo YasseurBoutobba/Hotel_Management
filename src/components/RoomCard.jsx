@@ -37,8 +37,8 @@ const RoomCard = ({ room }) => {
       <span className=" w-[20%] text-primaryGrey capitalize text-ase">
         {room?.status}
       </span>
-      <button  onClick={handelStatus} className={`${room?.status === "not available" ? "bg-primaryBlue/70" : "bg-primaryBlue"}  px-4 py-1 text-gray-50 rounded-[5px]`}>
-        Booking
+      <button  onClick={handelStatus} className={`${room?.status === "not available" ? " bg-primaryGreen" : "bg-primaryBlue"}  px-4 py-1 text-gray-50 rounded-[5px]`}>
+        {room?.status === "not available" ? "Booked" : "Booking"}
       </button>
     </div>
   );

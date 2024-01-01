@@ -13,7 +13,6 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(fetchUsers());
-    console.log("shit users is going crazy ")
     console.log(users)
   }, [changedUsers]);
   const STEP = 7;

@@ -52,7 +52,7 @@ const BookingCard = ({ booking }) => {
         </span>
       </div>
       <div className=" flex-1 flex ">
-        <span className="  flex-1 text-sm text-primaryGrey">
+        <span className=" max-w-[13ch]  flex-1 text-sm text-primaryGrey">
           {booking?.start_date !== ""
             ? `${booking?.start_date} --> ${booking?.end_date}`
             : "No date available "}

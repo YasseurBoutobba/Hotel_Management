@@ -3,11 +3,9 @@ import adminImg from "../assets/admin.png";
 import { NotificationsIcon } from "../utils/icons";
 import { useSelector } from "react-redux";
 const AdminCard = () => {
-  const {
-    nom,
-    prenom,
-    email
-  } = useSelector((state) => state.auth.userInfo);
+  const userInfo = useSelector((state) => state.auth.userInfo);
+  const nom = userInfo?.nom;
+  const prenom = userInfo?.prenom;
   const adminInfo = {
     name: nom + "" + prenom,
     role: "admin",

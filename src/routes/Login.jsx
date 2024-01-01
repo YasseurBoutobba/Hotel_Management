@@ -19,7 +19,7 @@ const Login = () => {
     }
     return (
         <div className=" w-[100dvw] h-[100dvh] bg-primaryGrey/60 flex justify-center items-center">
-            <form className=" flex flex-col gap-4 bg-gray-50 rounded-md p-4 items-center" onSubmit={handleSubmit} >
+            <form className=" flex flex-col gap-4 bg-gray-50 rounded-md py-4 px-8 items-center" onSubmit={handleSubmit} >
             <h1>log in</h1>
             <CustomInput placeholder="Email" value={user.email} onChnge={handleEmailChange} type="email" required={true} />
             <CustomInput placeholder="Password" value={user.password} onChnge={handlePasswordChange} type="password" required={true} />

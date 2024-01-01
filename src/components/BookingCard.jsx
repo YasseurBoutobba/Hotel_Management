@@ -57,7 +57,7 @@ const BookingCard = ({ booking }) => {
             ? `${booking?.start_date} --> ${booking?.end_date}`
             : "No date available "}
         </span>
-        <span className=" flex-1 text-primaryGrey">
+        <span className=" flex-1 text-gray-700">
           {booking?.start_date !== "" ? booking?.room : " no room"}
         </span>
       </div>

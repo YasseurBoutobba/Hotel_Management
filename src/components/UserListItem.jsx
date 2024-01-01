@@ -9,13 +9,13 @@ const UserListItem = ({ user }) => {
     setConfirm({ show: true, userId: user?.id });
   };
   return (
-    <div className=" flex  px-4 py-2 bg-gray-50 gap-6 items-center justify-between  ">
+    <div className=" flex  px-4 py-2 bg-gray-50  items-center  ">
       <ConfirmMoadl
         show={confirm.show}
         onClose={() => setConfirm({ ...confirm, show: false })}
       />
       <div className="flex-grow flex ">
-        <div className=" flex-grow">
+        <div className=" w-[40%]">
           <CostumUserCard
             name={`${user?.nom} ${user?.prenom}`}
             img={image}
@@ -25,7 +25,7 @@ const UserListItem = ({ user }) => {
 
         <span className="flex-grow text-primaryGrey">{user?.email}</span>
       </div>
-      <button  onClick={handleDelete}>
+      <button  className=" justify-self-end  w-[40px]" onClick={handleDelete}>
         <CancelIcon styles={"text-2xl text-gray-600"} />
       </button>
     </div>

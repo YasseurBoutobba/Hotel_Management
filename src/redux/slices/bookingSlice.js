@@ -5,6 +5,7 @@ const API_URL = "https://aceiny.tech:9991/booking";
 
 const initialState = {
   bookings: [],
+  bookingChanged: false,
   pendingBooking: false,
 };
 
@@ -70,7 +71,9 @@ const bookingSlice = createSlice({
       .addCase(createBooking.fulfilled, (state, action) => {
         state.pendingBooking = false;
         if (action.payload.status === 200) {
-          state.bookings = [...state.booking, action.payload.data];
+          state.bookings = [...state.bookings, action.payload.data];
+          state.bookingChanged = !state.bookingChanged;
+          Toast.success("Booking Status Changed Successfully");
         } else {
           Toast.error(action.payload.data.message);
         }

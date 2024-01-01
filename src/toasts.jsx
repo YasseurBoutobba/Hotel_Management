@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const Toast = (message, type) => {
   if (type === "success") {
     return toast.success(message, {

@@ -7,19 +7,19 @@ const BookingCard = ({ booking }) => {
   const [confirm, setConfirm] = useState({
     show: false,
     bookingId: booking?._id,
+    status: ""
   });
 
   const handleAccept = (e) => {
     if (booking?.status === "Pending") {
-      setConfirm({ show: true, userId: booking?._id });
-      console.log("accept");
+      setConfirm({ show: true, status: "Done", bookingId: booking?._id });
     } else {
       e.preventDefault();
     }
   };
   const handleDecline = () => {
     if (booking?.status === "Pending") {
-      setConfirm({ show: true, userId: booking?._id });
+      setConfirm({ show: true, status: "Canceled", bookingId: booking?._id });
     } else {
       e.preventDefault();
     }
@@ -29,6 +29,7 @@ const BookingCard = ({ booking }) => {
       <ConfirmBookingModal
         bookingId={confirm.bookingId}
         show={confirm.show}
+        bookingStatus={confirm.status}
         onClose={() => setConfirm({ ...confirm, show: false })}
       />
 

@@ -8,10 +8,11 @@ import { fetchBooking } from "../redux/slices/bookingSlice";
 const Booking = () => {
   const STEP = 8;
   const bookings = useSelector((state) => state.booking.bookings);
+  const bookingChanged = useSelector((state) => state.booking.bookingChanged);
   useEffect(() => {
     dispatch(fetchBooking());
     console.log("shit runing")
-  }, [bookings]);
+  },[bookingChanged]);
   const {
     startingIndex,
     usersNumber,

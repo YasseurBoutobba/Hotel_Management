@@ -11,8 +11,8 @@ const Users = () => {
   const changedUsers = useSelector((state) => state.users.changedUsers);
   useEffect(() => {
     dispatch(fetchUsers());
+    console.log("shit users is going crazy ")
   }, [changedUsers]);
-  console.log(users);
   const STEP = 8;
   const {
     startingIndex,

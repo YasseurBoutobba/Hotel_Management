@@ -13,6 +13,14 @@ const RoomCard = ({ room }) => {
     } Single Bed`;
   };
 
+  const handelStatus = (e)=>{
+    if(room?.status === "not available") {
+      e.preventDefault();
+    }else{
+      setShowBookingModal(true)
+    }
+  }
+
   const [showBookingModal, setShowBookingModal] = useState(false);
   const onClose = () => setShowBookingModal(false);
 
@@ -29,7 +37,7 @@ const RoomCard = ({ room }) => {
       <span className=" w-[20%] text-primaryGrey capitalize text-ase">
         {room?.status}
       </span>
-      <button onClick={()=> setShowBookingModal(true)} className=" bg-primaryBlue px-4 py-1 text-gray-50 rounded-[5px]">
+      <button  onClick={handelStatus} className={`${room?.status === "not available" ? "bg-primaryBlue/70" : "bg-primaryBlue"}  px-4 py-1 text-gray-50 rounded-[5px]`}>
         Booking
       </button>
     </div>

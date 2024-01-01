@@ -2,6 +2,8 @@ import { useState } from "react";
 import Modal from "./Modal";
 import CustomInput from "./CustomInput";
 import { CalendarIcon } from "../utils/icons";
+import { useDispatch } from "react-redux";
+import { bookRoom } from "../redux/slices/roomsSlice";
 const RoomBookingModal = ({ show, roomName, roomId, onClose }) => {
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -14,6 +16,28 @@ const RoomBookingModal = ({ show, roomName, roomId, onClose }) => {
   };
   const handelEndDateChange = (e) => {
     setEndDate(e.target.value);
+  };
+  const dispatch = useDispatch();
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    onClose();
+  };
+
+  const handelAccept = (e) => {
+    e.preventDefault();
+    dispatch(
+      bookRoom({
+        name: roomName,
+        room: roomId,
+        start_date: startDate,
+        end_date: endDate,
+        roomId,
+      })
+    );
+    setTimeout(() => {
+      onClose();
+    }, 1000);
   };
 
   return (
@@ -28,7 +52,7 @@ const RoomBookingModal = ({ show, roomName, roomId, onClose }) => {
           placeholder="Name"
         />
         <CustomInput value={roomName} type="text" placeholder={roomName} />
-        <div className=" mt-2 flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <CustomInput
             onChnge={handelStartDateChange}
             value={startDate}
@@ -46,14 +70,14 @@ const RoomBookingModal = ({ show, roomName, roomId, onClose }) => {
             <CalendarIcon styles={" text-primaryGrey"} />
           </CustomInput>
         </div>
-        <div className=" mt-2 flex items-center justify-between gap-4">
-          <button
+        <div className=" mt-2 flex items-center justify-center gap-4">
+          <button onClick={handelAccept}
             type="submit"
             className=" border-[1px] border-primaryBlue bg-primaryBlue text-gray-50 px-6 py-2 rounded-[5px]"
           >
-            Add User
+            Add Booking
           </button>
-          <button className=" border-[1px] border-primaryGrey text-primaryGrey px-6 py-2 rounded-[5px]">
+          <button  onClick={handleCancel} className=" border-[1px] border-primaryGrey text-primaryGrey px-6 py-2 rounded-[5px]">
             Cancel
           </button>
         </div>

@@ -22,6 +22,7 @@ const TableOfUsers = () => {
     endingIndex,
     handlePrevClick,
     handleNextClick,
+    currentPage
   } = useNextPrev(users, STEP);
 
   return (
@@ -101,6 +102,7 @@ const TableOfUsers = () => {
         handlePrevClick={handlePrevClick}
         usersNumbr={usersNumber}
         step={STEP}
+        currentPage={currentPage}
       />
     </div>
   );

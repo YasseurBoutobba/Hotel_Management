@@ -75,7 +75,7 @@ const bookingSlice = createSlice({
           state.bookingChanged = !state.bookingChanged;
           Toast.success("Booking Status Changed Successfully");
         } else {
-          Toast.error(action.payload.data.message);
+          // Toast.error(action.payload.data.message);
         }
       })
       .addCase(createBooking.rejected, (state, action) => {

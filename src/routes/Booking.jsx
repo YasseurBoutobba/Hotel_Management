@@ -19,6 +19,7 @@ const Booking = () => {
     endingIndex,
     handlePrevClick,
     handleNextClick,
+    currentPage
   } = useNextPrev(bookings, STEP);
   const dispatch = useDispatch();
   
@@ -39,6 +40,7 @@ const Booking = () => {
         handlePrevClick={handlePrevClick}
         usersNumbr={usersNumber}
         step={STEP}
+        currentPage={currentPage}
       />
     </div>
   );

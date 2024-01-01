@@ -20,6 +20,7 @@ const Users = () => {
     endingIndex,
     handlePrevClick,
     handleNextClick,
+    currentPage
   } = useNextPrev(users, STEP);
   const [showAddUser, setShowAddUser] = useState(false);
   const onClose = () => setShowAddUser(false);
@@ -49,6 +50,7 @@ const Users = () => {
         handlePrevClick={handlePrevClick}
         usersNumbr={usersNumber}
         step={STEP}
+        currentPage={currentPage}
       />
     </div>
   );

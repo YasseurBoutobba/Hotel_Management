@@ -7,6 +7,7 @@ const initialState = {
     status: "idle",
     error : null,
     token : null,
+    userName: '',
     isAuthenticated : localStorage.getItem("authorization") ? true : false,
     isAuthenticating : false,
 }
@@ -14,6 +15,7 @@ export const signIn = createAsyncThunk("auth/signIn",
 async (user) => {
     try{
         const response = await axios.post(`${API_URL}/signIn`, user);
+        console.log(response)
         return response;
     }catch(error){
         return error.response;
@@ -28,7 +30,10 @@ const authSlice = createSlice({
             localStorage.removeItem("authorization");
             state.isAuthenticated = false;
             state.token = null;
-            state.user = null;
+            state.userName = null;
+        },
+        setUserName : (state, action) => {
+            state.userName = action.payload;
         }
     },
     extraReducers : (builder) => {
@@ -53,5 +58,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout } = authSlice.actions;
+export const { logout, setUserName } = authSlice.actions;
 export default authSlice.reducer;

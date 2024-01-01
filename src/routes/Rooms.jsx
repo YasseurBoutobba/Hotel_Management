@@ -4,7 +4,7 @@ import useNextPrev from "../hooks/useNextPrev";
 import { useEffect, useState } from "react";
 import { fetchRooms } from "../redux/slices/roomsSlice";
 import RoomCard from "../components/RoomCard";
-
+import AddRoomModal from "../components/AddRoomModal";
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms.rooms);
   const changedRooms = useSelector((state) => state.rooms.changedRooms);
@@ -16,7 +16,7 @@ const Rooms = () => {
     console.log(rooms);
   }, [changedRooms]);
 
-  const STEP = 8;
+  const STEP = 7;
   const {
     startingIndex,
     usersNumber,
@@ -32,6 +32,7 @@ const Rooms = () => {
   return (
     <section className=" p-4">
       <div className=" flex justify-between items-center mb-4">
+        <AddRoomModal show={showAddRoom} onClose={onClose} />
         <h1 className=" text-2xl text-primaryBlue mb-4 ">Rooms</h1>
         <button
           onClick={() => setShowAddRoom(true)}

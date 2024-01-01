@@ -13,7 +13,7 @@ const Users = () => {
     dispatch(fetchUsers());
     console.log("shit users is going crazy ")
   }, [changedUsers]);
-  const STEP = 8;
+  const STEP = 7;
   const {
     startingIndex,
     usersNumber,

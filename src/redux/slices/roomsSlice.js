@@ -80,6 +80,7 @@ const roomsSlice = createSlice({
         state.pendingRooms = false;
         if (action.payload.status === 200) {
           state.rooms = [...state.rooms, action.payload.data];
+          state.changedRooms = !state.changedRooms;
           Toast("Room created successfully", "success");
         } else {
           Toast(action.payload.data.message, "error");
@@ -106,6 +107,8 @@ const roomsSlice = createSlice({
         Toast.error("Something went wrong");
       });
   },
+
+  serialize: true,
 });
 
 export default roomsSlice.reducer;

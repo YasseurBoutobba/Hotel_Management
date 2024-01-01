@@ -4,7 +4,6 @@ import { NotificationsIcon } from "../utils/icons";
 import { useSelector } from "react-redux";
 const AdminCard = () => {
   const userName = useSelector(state => state.auth.userName)
-  console.log("user name is : ", userName)
   const adminInfo = {
     name: userName,
     role: "admin",

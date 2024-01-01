@@ -76,7 +76,6 @@ const LeftSideBar = () => {
       <ul className=" flex flex-col w-full px-6 gap-6">
         {links2.map((link, i) => {
         if(link.name === "Logout"){
-          console.log("hello")
           return(
             <li
             key={i}

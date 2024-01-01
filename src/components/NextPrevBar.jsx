@@ -7,7 +7,6 @@ const NextPrevBar = ({
   step,
   currentPage
 }) => {
-  console.log("shit is : ", usersNumbr / step )
   return (
     <div className=" mt-3 text-primaryGrey flex items-center gap-4">
       <button

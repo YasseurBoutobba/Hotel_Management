@@ -81,6 +81,8 @@ const usersSlice = createSlice({
         Toast("Something went wrong", "error");
       });
   },
+
+  serialize: true,
 });
 
 export default usersSlice.reducer;

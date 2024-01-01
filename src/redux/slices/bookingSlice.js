@@ -38,6 +38,7 @@ export const createBooking = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
+      console.log(response)
       return response;
     } catch (error) {
       return error.response;
@@ -58,12 +59,12 @@ const bookingSlice = createSlice({
         if (action.payload.status === 200) {
           state.bookings = [...action.payload.data];
         } else {
-          Toast.error(action.payload.data.message);
+          Toast(action.payload.data.message, "error");
         }
       })
       .addCase(fetchBooking.rejected, (state, action) => {
         state.pendingBooking = false;
-        Toast.error("Something went wrong");
+        Toast("Something went wrong", "error");
       })
       .addCase(createBooking.pending, (state, action) => {
         state.pendingBooking = true;
@@ -73,16 +74,18 @@ const bookingSlice = createSlice({
         if (action.payload.status === 200) {
           state.bookings = [...state.bookings, action.payload.data];
           state.bookingChanged = !state.bookingChanged;
-          Toast.success("Booking Status Changed Successfully");
+          Toast("Booking Status Changed Successfully", "success");
         } else {
           // Toast.error(action.payload.data.message);
         }
       })
       .addCase(createBooking.rejected, (state, action) => {
         state.pendingBooking = false;
-        Toast.error("Something went wrong");
+        Toast("Something went wrong", "error");
       });
   },
+
+  serialize: true,
 });
 
 export default bookingSlice.reducer;

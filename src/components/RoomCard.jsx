@@ -45,16 +45,4 @@ const RoomCard = ({ room }) => {
 };
 export default RoomCard;
 
-// _id: "658a35a42207050214f09ae0"
-// ​​
-// name: "Room1"
-// ​​
-// nbr_doubleBeds: 0
-// ​​
-// nbr_persons: 2
-// ​​
-// nbr_singleBeds: 2
-// ​​
-// status: "not available"
-// ​​
-// type: "Room"
+

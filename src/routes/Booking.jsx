@@ -1,17 +1,16 @@
 import BookingCard from "../components/BookingCard";
-import users from "../data/data";
 import NextPrevBar from "../components/NextPrevBar";
 import useNextPrev from "../hooks/useNextPrev";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchBooking } from "../redux/slices/bookingSlice";
 const Booking = () => {
-  const STEP = 8;
+  const STEP = 7;
   const bookings = useSelector((state) => state.booking.bookings);
   const bookingChanged = useSelector((state) => state.booking.bookingChanged);
   useEffect(() => {
     dispatch(fetchBooking());
-    console.log("shit runing")
+
   },[bookingChanged]);
   const {
     startingIndex,

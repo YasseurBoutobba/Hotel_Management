@@ -99,6 +99,8 @@ const generalSlice = createSlice({
             }
         })
     },
+
+  serialize: true,
 });
 
 export default generalSlice.reducer;

@@ -47,13 +47,14 @@ const authSlice = createSlice({
                 state.isAuthenticated = true;
                 state.token = action.payload.data;
                 localStorage.setItem("authorization", action.payload.data);
+                Toast("Login Successful", "success")
             }else{
-                Toast.error(action.payload.data.message);
+                Toast(action.payload.data.message, "error");
             }
         })
         .addCase(signIn.rejected, (state, action) => {
             state.isAuthenticating = false;
-            Toast.error("Something went wrong");
+            Toast("Something went wrong", "error");
         })
     }
 })
